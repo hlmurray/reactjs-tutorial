@@ -1,0 +1,97 @@
+<!-- Same Hello World example but with ReactJS component -->
+
+<html>
+	<head>
+		<script src="https://fb.me/react-0.14.6.js"></script>
+		<script src="https://fb.me/react-dom-0.14.6.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.js"></script>
+	</head>
+	<body>
+		<div id="content"></div>
+	</body>
+	<script language="javascript" type="text/babel">
+	const jsonFromCustomer = {
+			menu: [
+					'Main',
+					'Products',
+					'Team',
+					'About'
+			],
+			products: [
+			{
+					name: 'Apple',
+					image: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSwrBajv_F7ZPPzcqzoiC5oixHg84qg3UupZfaFXp_X4ZDuinnCRQ'
+			},
+			{
+					name: 'Orange',
+					image: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTW3NSNIUKG55QARuAPfK1MrfhIyJf9_kuEmxhzaNot53Rk94hVNw'
+			},
+			{
+					name: 'Peach',
+					image: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ_miM9U4mx8rzuQ6cY6NNHycdlMwhrWFRQ3i3R6qqLJPHqfQym'
+			}
+			],
+			team: [
+			{
+					name: 'Big Boss',
+					image: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTrn9qwF2FxHKgqkVzjq5uZlodlg4M93gGWVa1Z1jaQbkHmVGhXYQ',
+					description: 'CEO'
+			},
+			{
+					name: 'Tech Big Boss',
+					image: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTkjrLvNVhBZzDM5yRURfCZJLtFbPHr2A0_itlR-TafpEz36Aad',
+					description: 'CTO'
+			}
+			],
+			about: "Some words about company"
+		};
+		const Menu = ({items}) =>
+			<div>
+				{items.map((name)=><span>{name}</span>)}
+			</div>
+
+		const Product = ({name, image}) =>
+			<div>
+				<div>{name}</div>
+				<img src={image}/>
+			</div>
+
+		const Products = ({items}) =>
+			<div>
+				<h1>Products</h1>
+				{items.map((productData)=><span>{productData}</span>)}
+			</div>
+
+		const Team = ({items}) =>
+			<div>
+				<h1>Team</h1>
+				{items.map((teamMember)=><span>{teamMemmber}</span>)}
+			</div>
+
+		const TeamMember = ({name, description, image}) =>
+			<div>
+				<div>{name}</div>
+				<img src={image}/>
+				<div>{description}</div>
+			</div>
+
+		const About = ({somewords}) =>
+			<div>
+				<h1>About</h1>
+				{somewords}
+			</div>
+
+		const App = ({menu, products, team, about}) =>
+		  <div>
+		    <Menu items={menu}/>
+				<Products items={products}/>
+		  	<Team items={team}/>
+		  	<About somewords={about}/>
+		  </div>
+
+		ReactDOM.render(
+			<App {...jsonFromCustomer}/>,
+			document.getElementById('content')
+		);
+	</script>
+</html>
