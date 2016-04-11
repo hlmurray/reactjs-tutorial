@@ -1,0 +1,45 @@
+<!-- Same Hello World example but with ReactJS component -->
+
+<html>
+	<head>
+		<script src="https://fb.me/react-0.14.6.js"></script>
+		<script src="https://fb.me/react-dom-0.14.6.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.js"></script>
+	</head>
+	<body>
+		<div id="content"></div>
+	</body>
+	<script language="javascript" type="text/babel">
+		/*
+		 With conditional operator (?)
+
+		 const App = ({show})=><span>{show ? 'true' : 'false'}</span>
+		*/
+
+		/*
+		 Hide when show is false
+
+		 const App = ({show})=><span>{show && 'I am visible only when show == true'}</span>
+		*/
+
+		const App = ({show})=> {
+			let showStr;
+			switch (show.toString()) {
+				case 'true':
+					showStr = 'True';
+					break
+				case 'false':
+					showStr = 'False';
+					break
+				default:
+					showStr = 'unknown';
+					break
+			}
+			return <span>{showStr}</span>
+		}
+
+		ReactDOM.render(
+		<App show={false}/>,
+		document.getElementById('content'))
+	</script>
+</html>

@@ -10,11 +10,13 @@
 		<div id="content"></div>
 	</body>
 	<script language="javascript" type="text/babel">
-		const HelloWorldComponent = ({name}) => <span>Hello {name}!</span> //ES6 function call
+		const App = ({fruits})=>
+			<div>
+				{fruits.map((item, i, arr) => <div>value: {item}, index: {i}</div>)}
+			</div>
 
 		ReactDOM.render(
-			<HelloWorldComponent name="Jack"/>,
-			document.getElementById('content')
-		);
+			<App fruits={["Apple", "Orange", "Peach"]} />,
+			document.getElementById('content'))
 	</script>
 </html>
